@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="main_page_padding" type="dimen">24dp</item>
+    <item name="start_btn_size" type="dimen">140dp</item>
+    <item name="timer_btn_size" type="dimen">100dp</item>
+</resources>
