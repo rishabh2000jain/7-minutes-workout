@@ -8,7 +8,7 @@
     android:paddingHorizontal="24dp"
     android:orientation="vertical"
     android:paddingVertical="20dp"
-    tools:context=".fragments.USUnitFragment">
+    tools:context=".ui.fragments.USUnitFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

@@ -10,7 +10,7 @@ abstract class HistoryDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: HistoryDatabase? = null
-        fun getDatabase(context: Context):RoomDatabase {
+        fun getDatabase(context: Context):HistoryDatabase {
             synchronized(this){
                 INSTANCE = INSTANCE ?: Room.databaseBuilder(context.applicationContext, HistoryDatabase::class.java, "user_history_database")
                     .fallbackToDestructiveMigration()

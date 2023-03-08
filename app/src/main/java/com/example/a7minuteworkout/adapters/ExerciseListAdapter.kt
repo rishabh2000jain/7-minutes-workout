@@ -1,9 +1,11 @@
-package com.example.a7minuteworkout
+package com.example.a7minuteworkout.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.a7minuteworkout.R
 import com.example.a7minuteworkout.databinding.ExerciseListItemBinding
+import com.example.a7minuteworkout.models.ExerciseModel
 
 class ExerciseListAdapter(private val exerciseList:ArrayList<ExerciseModel>) : RecyclerView.Adapter<ExerciseListAdapter.ExerciseListViewHolder>(){
     inner class ExerciseListViewHolder(val listItemBinding: ExerciseListItemBinding):RecyclerView.ViewHolder(listItemBinding.root)

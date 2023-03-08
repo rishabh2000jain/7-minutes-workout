@@ -1,4 +1,4 @@
-package com.example.a7minuteworkout
+package com.example.a7minuteworkout.util
 
 object BMIIndexUtil {
     private val map: Map<String, String> =

@@ -1,4 +1,4 @@
-package com.example.a7minuteworkout
+package com.example.a7minuteworkout.ui.activity
 
 import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.example.a7minuteworkout.fragments
+package com.example.a7minuteworkout.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.a7minuteworkout.BMIIndexUtil
-import com.example.a7minuteworkout.R
+import com.example.a7minuteworkout.util.BMIIndexUtil
 import com.example.a7minuteworkout.databinding.FragmentMetricUnitBinding
-import com.example.a7minuteworkout.databinding.FragmentUSUnitBinding
 import kotlin.math.pow
 
 class MetricUnitFragment : Fragment() {

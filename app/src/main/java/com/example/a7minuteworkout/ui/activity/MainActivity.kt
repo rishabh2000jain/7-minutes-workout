@@ -1,12 +1,9 @@
-package com.example.a7minuteworkout
+package com.example.a7minuteworkout.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.lifecycleScope
 import com.example.a7minuteworkout.databinding.ActivityMainBinding
-import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
@@ -15,11 +12,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.startBtnFrameLayout.setOnClickListener {
-           val intent = Intent(this@MainActivity,ExerciseActivity::class.java)
+           val intent = Intent(this@MainActivity, ExerciseActivity::class.java)
+           startActivity(intent)
+        }
+        binding.historyLinearLayout.setOnClickListener {
+           val intent = Intent(this@MainActivity, HistoryActivity::class.java)
            startActivity(intent)
         }
         binding.bmiBtn.setOnClickListener {
-            val intent = Intent(this@MainActivity,BmiActivity::class.java)
+            val intent = Intent(this@MainActivity, BmiActivity::class.java)
             startActivity(intent)
         }
     }

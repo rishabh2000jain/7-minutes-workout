@@ -1,5 +1,7 @@
-package com.example.a7minuteworkout
+package com.example.a7minuteworkout.util
 
+import com.example.a7minuteworkout.R
+import com.example.a7minuteworkout.models.ExerciseModel
 import java.util.*
 
 

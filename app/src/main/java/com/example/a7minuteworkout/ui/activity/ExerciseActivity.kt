@@ -1,4 +1,4 @@
-package com.example.a7minuteworkout
+package com.example.a7minuteworkout.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,17 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.a7minuteworkout.util.Constants
+import com.example.a7minuteworkout.adapters.ExerciseListAdapter
+import com.example.a7minuteworkout.models.ExerciseModel
+import com.example.a7minuteworkout.application.SevenMinutesApplication
 import com.example.a7minuteworkout.databinding.ActivityExerciseBinding
+import com.example.a7minuteworkout.db.History
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.Duration
+import java.util.Calendar
 
 class ExerciseActivity : AppCompatActivity() {
     lateinit var binding:ActivityExerciseBinding
@@ -15,7 +24,7 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseCountDownTimer: CountDownTimer? = null
     private val restCountDownTimerDuration:Long = 15000L
     private val exerciseCountDownTimerDuration:Long = 30000L
-    private var exerciseListAdapter:ExerciseListAdapter? = null
+    private var exerciseListAdapter: ExerciseListAdapter? = null
     private val countDownInterval:Long = 1000L
     private var currentExerciseIndex = 0
 
@@ -76,7 +85,7 @@ class ExerciseActivity : AppCompatActivity() {
                if(currentExerciseIndex < exerciseList.size) {
                    startRestTimer()
                }else{
-                   navigateToFinishActivity()
+                   exerciseFinished()
                }
            }
        }
@@ -135,7 +144,21 @@ class ExerciseActivity : AppCompatActivity() {
     }
     private fun navigateToFinishActivity(){
         finish()
-        val intent = Intent(this@ExerciseActivity,FinishActivity::class.java)
+        val intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
         startActivity(intent)
+    }
+
+
+    private suspend fun logDateTimeToDb(){
+        val db = (application as SevenMinutesApplication).database
+        val calendar = Calendar.getInstance()
+        db.getDao().insertHistoryItem(History(date = calendar.time.time))
+    }
+
+    private fun exerciseFinished(){
+        lifecycleScope.launch(Dispatchers.IO){
+            logDateTimeToDb()
+        }
+        navigateToFinishActivity()
     }
 }
